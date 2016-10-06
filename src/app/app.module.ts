@@ -20,6 +20,7 @@ import { Footer } from './controls/footer.component';
 import { Sidebar } from './menu/sidebar.component';
 import {FlotCmp} from './controls/network-activities.component'
 import { Content } from './content';
+import { Inbox } from './content';
 import { NoContent } from './no-content';
 import { XLarge } from './home/x-large';
 import { FontAwesomeDirective } from 'ng2-fontawesome';
@@ -46,6 +47,7 @@ type StoreType = {
     About,
     Home,
     Content,
+    Inbox,
     Footer,
     Sidebar,
     FlotCmp,

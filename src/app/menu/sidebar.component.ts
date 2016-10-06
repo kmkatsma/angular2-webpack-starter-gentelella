@@ -33,32 +33,28 @@ export class Sidebar {
     anchorClicked(event: MouseEvent)
     {
         
-        var target = event.srcElement;
+        var target = event.srcElement.id;
 
-        //var $li = $(event.n).parent();
-        //let plotArea = $(this.el.nativeElement).find('div');
+        var $li = $('#' + target).parent(); 
 
-
-        /*var li = target.parentElement;
-
-        if (li.className = '.active') {
+        if ($li.is('.active')) {
             $li.removeClass('active active-sm');
                 $('ul:first', $li).slideUp(function() {
-                    this.setContentHeight();
+                    //this.setContentHeight();
                 });
             } else {
                 // prevent closing menu if we are on child menu
                 if (!$li.parent().is('.child_menu')) {
-                    this.$SIDEBAR_MENU.find('li').removeClass('active active-sm');
-                    this.$SIDEBAR_MENU.find('li ul').slideUp();
+                    $('#sidebar-menu').find('li').removeClass('active active-sm');
+                    $('#sidebar-menu').find('li ul').slideUp();
                 }
                 
                 $li.addClass('active');
 
                 $('ul:first', $li).slideDown(function() {
-                    this.setContentHeight();
+                    //this.setContentHeight();
                 });
-            }*/
+            }
     }
 
     plot()
