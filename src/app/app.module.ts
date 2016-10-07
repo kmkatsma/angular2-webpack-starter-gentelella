@@ -18,7 +18,8 @@ import { Home } from './home';
 import { About } from './about';
 import { Footer } from './controls/footer.component';
 import { Sidebar } from './menu/sidebar.component';
-import {FlotCmp} from './controls/network-activities.component'
+import { TopNavBar } from './menu/topnavbar.component';
+import { FlotCmp } from './controls/network-activities.component'
 import { Content } from './content';
 import { Inbox } from './content';
 import { NoContent } from './no-content';
@@ -50,6 +51,7 @@ type StoreType = {
     Inbox,
     Footer,
     Sidebar,
+    TopNavBar,
     FlotCmp,
     NoContent,
     XLarge,
