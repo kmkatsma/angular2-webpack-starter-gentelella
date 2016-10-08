@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
   templateUrl: './topnavbar.component.html'
 })
 export class TopNavBar {
-    // TypeScript public modifiers
+    // TypeScript public modifier
     constructor() {
 
     }

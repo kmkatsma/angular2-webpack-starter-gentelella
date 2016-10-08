@@ -1,5 +1,6 @@
 {
   "globalDependencies": {
-    "flot/jquery.flot": "registry:dt/flot/jquery.flot#0.0.0+20160317120654"
+    "flot/jquery.flot": "registry:dt/flot/jquery.flot#0.0.0+20160317120654",
+    "jquery": "registry:dt/jquery#1.10.0+20160929162922"
   }
 }
