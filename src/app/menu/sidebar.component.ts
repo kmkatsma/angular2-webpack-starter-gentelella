@@ -35,7 +35,7 @@ export class Sidebar {
         
         var target = event.srcElement.id;
 
-        var $li = $('#' + target).parent(); 
+        var $li = $('#' + target.replace("chevron","li")).parent(); 
 
         if ($li.is('.active')) {
             $li.removeClass('active active-sm');
