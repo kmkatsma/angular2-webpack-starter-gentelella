@@ -11,7 +11,7 @@ I have made some small efforts to try to do things in more angular friendly appr
 
 ### Other dependencies (jquery-flot and font-awesome) 
 **jquery-flot**
-The hardest challenge to the conversion was incorporation of jquery-flot and font-awesome.  Jquery-flot doesn't follow module patterns currently in use for webpack/typescript, so had to do some individual file imports. I also had to bring in the flot-spline depency as a file import from a "vendors" folder.  I did not want to use bower, which is the only library source for this file currently - at least that which I could fine.
+The hardest challenge to the conversion was incorporation of jquery-flot and font-awesome.  Jquery-flot doesn't follow module patterns currently in use for webpack/typescript, so had to do some individual file imports. I also had to bring in the flot-spline depency as a file import from a "vendors" folder.  I did not want to use bower, which is the only library source for this file currently - at least that which I could find.
 
 **font-awesome**
 I used font-awesome-webpack to bring in the font-awesome components.  There is an ugly hack in the import for this in the app modulke, mainly because of an issue with webpack2 <a href="https://github.com/gowravshekar/font-awesome-webpack/issues/24">outlined here </a> - there is a fork with the fix included, but I didn't use.  I include ng2-fontawesome, and use in one place, but most is just left as styles in HTML.   
