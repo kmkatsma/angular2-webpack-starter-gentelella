@@ -1,22 +1,22 @@
-### Angular2 Gentelella 
+# Angular2 Gentelella 
 This repo is a fork off of angular2 <a href="https://github.com/angularclass/angular2-webpack-starter.git">Angular Webpack Starter</a> modified to utilize the <a href="https://github.com/puikinsh/gentelella">Gentelella</a> free bootstrap theme
 
 It does not currently have support for all the pages of existing gentelella, and some of the javascript tools (like pie charts) needed for dashboard controls have not yet been incorporated in project. 
 
-### JQuery and Bootstrap 3
-**JQuery and Bootstrap have been added to this project to support requirements of Gentelella**
+## JQuery and Bootstrap 3
+**JQuery and Bootstrap have been added to this project to support requirements of Gentelella.**
 JQuery is imported globally, and the $ references are just typed in IDE by the globally imported typings jquery.d.ts file.  I do not do an import of JQuery on any pages as this has proven quite problematic for me, and a number of people in regards to both typings issues and JS module issues.
 
 I have made some small efforts to try to do things in more angular friendly approach, but for the most part JQuery is just invoked after Angular2 components are rendered using the ngAfterViewInit. It's also used directly in the click events that are bound through Angular to individual screen elements. This is opposed to the dynamic adding of click handlers to the DOM elements in the base Gentelella.
 
-### Other dependencies (jquery-flot and font-awesome) 
+## Other dependencies (jquery-flot and font-awesome) 
 **jquery-flot**
 The hardest challenge to the conversion was incorporation of jquery-flot and font-awesome.  Jquery-flot doesn't follow module patterns currently in use for webpack/typescript, so had to do some individual file imports. I also had to bring in the flot-spline depency as a file import from a "vendors" folder.  I did not want to use bower, which is the only library source for this file currently - at least that which I could find.
 
 **font-awesome**
 I used font-awesome-webpack to bring in the font-awesome components.  There is an ugly hack in the import for this in the app modulke, mainly because of an issue with webpack2 <a href="https://github.com/gowravshekar/font-awesome-webpack/issues/24">outlined here </a> - there is a fork with the fix included, but I didn't use.  I include ng2-fontawesome, and use in one place, but most is just left as styles in HTML.   
 
-### Quick start
+## Quick start
 **Make sure you have Node version >= 5.0 (I actually have been using 4.5.0 version with success) and NPM >= 3**
 **Make sure you have typings installed globally**
 
@@ -39,9 +39,10 @@ npm start
 
 # use Hot Module Replacement
 npm run server:dev:hmr
+```
 
-# Getting Started
-## Dependencies
+## Getting Started
+### Dependencies
 What you need to run this app:
 * `node` and `npm`and `typings` 
 * Ensure you're running the latest versions Node `v4.x.x`+ (or `v5.x.x`) and NPM `3.x.x`+
@@ -56,14 +57,14 @@ Once you have those, you should install these globals with `npm install --global
 * `typescript` (`npm install --global typescript`)
 * `typings` (`npm install --global typings`)
 
-## Installing
+### Installing
 * `fork` this repo
 * `clone` your fork
 * `npm install webpack-dev-server rimraf webpack -g` to install required global dependencies
 * `npm install` to install all dependencies
 * `npm run server` to start the dev server in another tab
 
-## Running the app
+### Running the app
 After you have installed all dependencies you can now run the app. Run `npm run server` to start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The port will be displayed to you as `http://0.0.0.0:3000` (or if you prefer IPv6, if you're using `express` server, then it's `http://[::1]:3000/`).
 
 ### server
@@ -125,23 +126,23 @@ npm run e2e:live
 ```
  
 
-# Configuration
+## Configuration
 Configuration files live in `config/` we are currently using webpack, karma, and protractor for different stages of your application
 
-# Contributing
+## Contributing
 You can include more examples as components but they must introduce a new concept such as `Home` component (separate folders), and Todo (services). I'll accept pretty much everything so feel free to open a Pull-Request
 
-# TypeScript
+## TypeScript
 > To take full advantage of TypeScript with autocomplete you would have to install it globally and use an editor with the correct TypeScript plugins.
 
-## Use latest TypeScript compiler
+### Use latest TypeScript compiler
 TypeScript 1.7.x includes everything you need. Make sure to upgrade, even if you installed TypeScript previously. (Note I use typescript 2.0.1)
 
 ```
 npm install --global typescript
 ```
 
-## Use a TypeScript-aware editor
+### Use a TypeScript-aware editor
 We have good experience using these editors:
 
 * [Visual Studio Code](https://code.visualstudio.com/)
@@ -154,7 +155,7 @@ We have good experience using these editors:
 
 The included `.vscode` automatically connects to the webpack development server on port `3000`.
 
-# Types
+## Types
 > When you include a module that doesn't include Type Definitions inside of the module you can include external Type Definitions with @types
 
 i.e, to have youtube api support, run this command in terminal: 
@@ -168,7 +169,7 @@ import '@types/gapi';
 import '@types/youtube';
 ```
 
-## Custom Type Definitions
+### Custom Type Definitions
 When including 3rd party modules you also need to include the type definition for the module
 if they don't provide one within the module. You can try to install it with @types
 
@@ -203,5 +204,5 @@ import * as _ from 'lodash';
 
 ___
 
-# License
+## License
  [MIT](/LICENSE)
