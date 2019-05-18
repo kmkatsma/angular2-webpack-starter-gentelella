@@ -1,31 +1,11 @@
-/*
- * Angular 2 decorators and services
- */
-import { Component, ViewEncapsulation } from '@angular/core';
-import 'style!css!less!font-awesome-webpack/font-awesome-styles.loader!font-awesome-webpack/font-awesome.config.js';
-import { AppState } from './app.service';
+import { Component } from '@angular/core';
+import * as jQuery from 'jquery';
 
-/*
- * App Component
- * Top Level Component
- */
 @Component({
-  selector: 'app',
-  encapsulation: ViewEncapsulation.None,
-  styleUrls: [
-    './app.style.css'
-  ],
-  templateUrl: './app.component.html'
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
-export class App {
-
-  constructor(
-    public appState: AppState) {
-
-  }
-
-  ngOnInit() {
-    console.log('Initial App State', this.appState.state);
-  }
-
+export class AppComponent {
+  title = 'app';
 }

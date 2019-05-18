@@ -1,110 +1,37 @@
-import { NgModule, ApplicationRef } from '@angular/core';
+import { SidebarComponent } from './menu/sidebar/sidebar.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
-import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
+import { NgModule } from '@angular/core';
 
-/*
- * Platform and Environment providers/directives/pipes
- */
-import { ENV_PROVIDERS } from './environment';
-import { ROUTES } from './app.routes';
-// App is our top level component
-import { App } from './app.component';
-import { APP_RESOLVER_PROVIDERS } from './app.resolver';
-import { AppState, InteralStateType } from './app.service';
-import { Home } from './home';
-import { About } from './about';
-import { Footer } from './controls/footer.component';
-import { Sidebar } from './menu/sidebar.component';
-import { TopNavBar } from './menu/topnavbar.component';
-import { FlotCmp } from './controls/network-activities.component'
-import { Content } from './content';
-import { Inbox } from './content';
-import { NoContent } from './no-content';
-import { XLarge } from './home/x-large';
+import { AppComponent } from './app.component';
+import { NoContentComponent } from './global/no-content/no-content.component';
+import { ContentComponent } from './content/content.component';
+import { RouterModule, Routes } from '@angular/router';
+import { TopNavBarComponent } from './menu/top-nav-bar/top-nav-bar.component';
 import { FontAwesomeDirective } from 'ng2-fontawesome';
+import { Footer } from './global/footer/footer.component';
+import { NetworkActivitiesComponent } from './content/network-activities/network-activities.component';
+import * as jQuery from 'jquery';
 
-// Application wide providers
-const APP_PROVIDERS = [
-  ...APP_RESOLVER_PROVIDERS,
-  AppState
+export const AppRoutes2: Routes = [
+  { path: '', component: ContentComponent },
+  /*{ path: 'inbox',  component: Inbox },
+  { path: 'about', component: About },*/
+  { path: '**', component: NoContentComponent }
 ];
 
-type StoreType = {
-  state: InteralStateType,
-  restoreInputValues: () => void,
-  disposeOldHosts: () => void
-};
-
-/**
- * `AppModule` is the main entry point into Angular2's bootstraping process
- */
 @NgModule({
-  bootstrap: [ App ],
   declarations: [
-    App,
-    About,
-    Home,
-    Content,
-    Inbox,
+    AppComponent,
+    SidebarComponent,
+    NoContentComponent,
+    ContentComponent,
+    TopNavBarComponent,
+    FontAwesomeDirective,
     Footer,
-    Sidebar,
-    TopNavBar,
-    FlotCmp,
-    NoContent,
-    XLarge,
-    FontAwesomeDirective
+    NetworkActivitiesComponent
   ],
-  imports: [ // import Angular's modules
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true })
-  ],
-  providers: [ // expose our Services and Providers into Angular's dependency injection
-    ENV_PROVIDERS,
-    APP_PROVIDERS
-  ]
+  imports: [BrowserModule, RouterModule.forRoot(AppRoutes2, { useHash: true })],
+  providers: [],
+  bootstrap: [AppComponent]
 })
-export class AppModule {
-  constructor(public appRef: ApplicationRef, public appState: AppState) {}
-
-  hmrOnInit(store: StoreType) {
-    if (!store || !store.state) return;
-    console.log('HMR store', JSON.stringify(store, null, 2));
-    // set state
-    this.appState._state = store.state;
-    // set input values
-    if ('restoreInputValues' in store) {
-      let restoreInputValues = store.restoreInputValues;
-      setTimeout(restoreInputValues);
-    }
-
-    this.appRef.tick();
-    delete store.state;
-    delete store.restoreInputValues;
-  }
-
-  hmrOnDestroy(store: StoreType) {
-    const cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
-    // save state
-    const state = this.appState._state;
-    store.state = state;
-    // recreate root elements
-    store.disposeOldHosts = createNewHosts(cmpLocation);
-    // save input values
-    store.restoreInputValues  = createInputTransfer();
-    // remove styles
-    removeNgStyles();
-  }
-
-  hmrAfterDestroy(store: StoreType) {
-    // display new elements
-    store.disposeOldHosts();
-    delete store.disposeOldHosts;
-  }
-
-}
-
+export class AppModule {}
